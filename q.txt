@@ -1,0 +1,39 @@
+1. Do you think your program will help the study keep track of the research data?
+
+Yes, I do think the program will help the study keep track of the research data. 
+The program gives every participant a unique id and assigns the treatment
+by the same rule every time, so it will always be consistent. 
+Answers are saved in a consistent format, and each survey starts with
+the date and participant id, so it can be matched to the right person.
+
+
+2. Describe how you might add functionality to calculate the statistics.
+
+I would add a fifth menu option that reads survey.dat one line at a time and
+splits each line on the '|' character. Using the participant id on each line, I
+would look up the participant in participant.dat to see if they were in the
+StudyMor group or the placebo group. For each group I would count the total
+surveys and the number of "Yes" answers to the headache, constipation, sleep,
+and study questions.
+
+
+3. What things do you think will be easier and what things are more difficult
+   using file I/O instead of a database?
+
+Easier:
+- There is no database software to install or configure. The program only needs
+  the C++ standard library.
+- The files are plain text, so they can be opened and checked in any text editor
+  and are easy to copy or back up.
+- Adding a new record only takes one append, and the code is simple to write.
+
+More difficult:
+- Searching and calculating statistics require code that reads and splits every line.
+- Changing or deleting one record usually means rewriting the whole file.
+- The program has to enforce the rules itself, such as unique ids and valid
+  participant ids in the surveys. A database has primary and foreign keys for this.
+- If two people use the program at once, they could get the same id. A database
+  handles simultaneous users and has transactions to protect against failures.
+- A database has built-in user accounts and permissions, while plain text files
+  can be read or changed by anyone with access to them.
+- Changing the file format later means updating the code and converting old files.
